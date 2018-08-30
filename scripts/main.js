@@ -2,6 +2,6 @@
 /* global events, domRender, store $ */
 
 $(function() {
-  events.bindAllUIListeners();
-  domRender.show();
+  events.bindUIListeners();
+  domRender.showStore();
 });

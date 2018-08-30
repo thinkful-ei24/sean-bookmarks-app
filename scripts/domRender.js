@@ -8,5 +8,5 @@ const domRender = (function() {
 
   return {
     show: renderMain
-  }
+  };
 });
