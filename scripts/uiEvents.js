@@ -50,6 +50,11 @@ const uiEventHandlers = (function() {
   // only if it's needed
   function handleMinRatingChange() {
 
+    $('.star-rating-filter').change(event => {
+      console.log(event.target);
+    });
+
+    // $("#dropdown-rating-filter")
   }
 
   return {

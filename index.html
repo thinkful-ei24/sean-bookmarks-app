@@ -8,21 +8,20 @@
   <title>Bookmark App</title>
   <!-- TODO: font, normalize.css -->
   <!-- TODO: styles (from folder) -->
+  <!-- <link rel="stylesheet" href="styles/index.css"> -->
 </head>
 <body>
   
   <h1>Bookmark App</h1>
   <form id='bookmark-app-form'>
-    <button name="add" >Add Bookmark</button>
-    <!--TODO combo box and grouped radio buttons styled as stars. changing one updates the other-->
     <div>
-      <input type="radio" name="1-star">
-      <input type="radio" name="2-star">
-      <input type="radio" name="3-star">
-      <input type="radio" name="4-star">
-      <input type="radio" name="5-star">
+      <input type="checkbox" name="1-star" class="star-rating-filter">
+      <input type="checkbox" name="2-star" class="star-rating-filter">
+      <input type="checkbox" name="3-star" class="star-rating-filter">
+      <input type="checkbox" name="4-star" class="star-rating-filter">
+      <input type="checkbox" name="5-star" class="star-rating-filter">
     </div>
-    <select name="rating-filter">
+    <select name="rating-filter" id="dropdown-rating-filter">
       <option value="rating-0" selected>Filter by rating</option>
       <option value="rating-1">Show 1+ stars</option>
       <option value="rating-2">Show 2+ stars</option>
@@ -64,7 +63,7 @@
   <!-- imports -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="./scripts/store.js"></script>
-  <!-- -->
+  <script src="./scripts/api.js"></script>
   <script src="./scripts/domRender.js"></script>
   <script src="./scripts/uiEvents.js"></script>
   <script src="./scripts/main.js"></script>

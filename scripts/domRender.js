@@ -1,12 +1,12 @@
 
-/* globals $ */
+/* globals store, $ */
 
 const domRender = (function() {
 
   // main renderer call
   function renderMain() {
-    let bookmark = {};
-    const renderedHtml = generateListBlock(bookmark);
+    const renderedHtml = store.bookmarks.map(bookmark => generateListBlock(bookmark))
+      .join('');
     console.log(renderedHtml);
     $('.bookmark-list').html(renderedHtml);
   }

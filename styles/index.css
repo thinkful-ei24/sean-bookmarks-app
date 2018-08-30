@@ -23,3 +23,12 @@
 .button-delete {
 
 }
+
+.star-rating-filter {
+  content: "\2606";
+}
+
+.star-rating-filter > span:hover:before {
+  content: "\2605";
+  position: absolute;
+}
