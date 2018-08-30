@@ -1,6 +1,7 @@
 * {
   font-family: 'Roboto', sans-serif;
   font-size: 18px;
+  box-sizing: border-box;
 }
 
 #bookmark-app-form {
@@ -16,6 +17,7 @@
   border-radius: 5px;
   display: flex;
   color: gray;
+  flex-direction: column;
 }
 
 .button-visit-site a {
@@ -24,11 +26,17 @@
 }
 
 .button-toggle-details {
-
+  align-items: flex-end;
 }
 
 .button-delete {
+  visibility: hidden;
+  align-self: flex-end;
+}
 
+.bookm
+.bookmark-block:hover .button-delete {
+  visibility: visible;
 }
 
  .rating {
