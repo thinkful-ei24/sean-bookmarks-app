@@ -6,11 +6,12 @@ const store = (function() {
     this.bookmarks.push(bookmark);
   }
 
-  function findBookmark(id) {
-
+  function updateBookmark(id, objProperties) {
+    const selectedBookmark = findBookmark(id);
+    Object.assign(selectedBookmark, objProperties);
   }
 
-  function findAndUpdateBookmark(id) {
+  function findBookmark(id) {
 
   }
 
@@ -26,8 +27,7 @@ const store = (function() {
     minDisplayRating: 0,
     // Functions
     addBookmark,
-    findAndUpdateBookmark
-
+    updateBookmark
   };
 
 }());

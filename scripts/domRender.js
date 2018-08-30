@@ -5,14 +5,20 @@ const domRender = (function() {
 
   // main renderer call
   function renderMain() {
-    const renderedHtml = store.bookmarks.map(bookmark => generateListBlock(bookmark))
+    let items = store.bookmarks;
+
+    const minRating = store.minDisplayRating;
+    if(minRating > 0) {
+      items = items.filter(bookmark => bookmark.rating >= minRating);
+    }
+
+    const renderedHtml = items.map(bookmark => generateListBlock(bookmark))
       .join('');
-    console.log(renderedHtml);
     $('.bookmark-list').html(renderedHtml);
   }
 
   function generateListBlock(bookmark) {
-    return `<li>
+    return `<li class="bookmark-block">
       <h2>${bookmark.title}</h2>
         <span class="bookmark-rating"></span>
         <button class="button-delete">Delete</button>

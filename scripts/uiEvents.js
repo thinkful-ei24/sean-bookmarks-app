@@ -1,5 +1,5 @@
 
-/* global $ */
+/* global store, domRender $ */
 
 const uiEventHandlers = (function() {
 
@@ -23,8 +23,10 @@ const uiEventHandlers = (function() {
   function handleBookmarkAdd() {
     $('#bookmark-app-form').submit(event => {
       event.preventDefault();
-      console.log($(event.target).serializeJson());
-      console.log('add bookmark');
+      console.log('add button clicked');
+      let jsonData = $(event.target).serializeJson();
+      // TODO add logic
+      domRender.showStore();
     });
   }
 
@@ -49,12 +51,19 @@ const uiEventHandlers = (function() {
   // TODO handle combobox and the radiobox stars, splitting the function
   // only if it's needed
   function handleMinRatingChange() {
-
-    $('.star-rating-filter').change(event => {
-      console.log(event.target);
+    $('#dropdown-rating-filter').change(event => {
+      // console.log('rating changed');
+      // let selectedElementName = $(event.currentTarget).JSON.parse(jsonData)['rating-filter'];
+      // let rating = parseInt(selectedElementName.slice(-1), 10);
+      // console.log(rating);
+      console.log(parseInt(event.currentTarget.value, 10));
+      store.minDisplayRating = parseInt(event.currentTarget.value, 10);
+      domRender.showStore();
     });
 
-    // $("#dropdown-rating-filter")
+        // $('.star-rating-filter').change(event => {
+
+    // });
   }
 
   return {

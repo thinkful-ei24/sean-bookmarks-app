@@ -8,8 +8,14 @@
 }
 
 .bookmark-list {
-  background-color: pink;
   list-style: none;
+}
+
+.bookmark-block {
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  color: gray;
 }
 
 .button-visit-site {
@@ -24,11 +30,46 @@
 
 }
 
-.star-rating-filter {
-  content: "\2606";
+ .rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+ }
+
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+  cursor: grab;
 }
 
-.star-rating-filter > span:hover:before {
+/* ANIMATION FOR STAR RATING SPAN*/
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
   content: "\2605";
   position: absolute;
 }
+
+/* .selected {
+  content: "\2605";
+} */
+
+/* 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.star-rating {
+  display: none;
+}
+
+.star-rating + label:before {
+  display: inline-block;
+  content: '\2606';
+}
+
+input[type="radio"]:checked + label:before {
+  content: '\2605';
+  background-color: pink;
+} */

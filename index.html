@@ -8,26 +8,30 @@
   <title>Bookmark App</title>
   <!-- TODO: font, normalize.css -->
   <!-- TODO: styles (from folder) -->
-  <!-- <link rel="stylesheet" href="styles/index.css"> -->
+  <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
   
   <h1>Bookmark App</h1>
   <form id='bookmark-app-form'>
-    <div>
-      <input type="checkbox" name="1-star" class="star-rating-filter">
-      <input type="checkbox" name="2-star" class="star-rating-filter">
-      <input type="checkbox" name="3-star" class="star-rating-filter">
-      <input type="checkbox" name="4-star" class="star-rating-filter">
-      <input type="checkbox" name="5-star" class="star-rating-filter">
+    <button name='button-add'>Add Bookmark</button>
+    <!-- <div>
+      <input type="radio" name="1-star" class="star-rating"><label for="1-star"></label>
+      <input type="radio" name="2-star" class="star-rating"><label for="2-star"></label>
+      <input type="radio" name="3-star" class="star-rating"><label for="3-star"></label>
+      <input type="radio" name="5-star" class="star-rating"><label for="4-star"></label>
+      <input type="radio" name="4-star" class="star-rating"><label for="5-star"></label>
+    </div> -->
+    <div class="rating">
+        <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
     </div>
     <select name="rating-filter" id="dropdown-rating-filter">
-      <option value="rating-0" selected>Filter by rating</option>
-      <option value="rating-1">Show 1+ stars</option>
-      <option value="rating-2">Show 2+ stars</option>
-      <option value="rating-3">Show 3+ stars</option>
-      <option value="rating-4">Show 4+ stars</option>
-      <option value="rating-5">Show only 5 stars</option>
+      <option value="0" selected>Filter by rating</option>
+      <option value="1">Show 1+ stars</option>
+      <option value="2">Show 2+ stars</option>
+      <option value="3">Show 3+ stars</option>
+      <option value="4">Show 4+ stars</option>
+      <option value="5">Show only 5 stars</option>
     </select>
   </form>
 
