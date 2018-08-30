@@ -13,8 +13,23 @@
   
   <h1>Bookmark App</h1>
   <form id='bookmark-app-form'>
-    <button>Add Bookmark</button>
+    <button name="add" >Add Bookmark</button>
     <!--TODO combo box and grouped radio buttons styled as stars. changing one updates the other-->
+    <div>
+      <input type="radio" name="1-star">
+      <input type="radio" name="2-star">
+      <input type="radio" name="3-star">
+      <input type="radio" name="4-star">
+      <input type="radio" name="5-star">
+    </div>
+    <select name="rating-filter">
+      <option value="rating-0" selected>Filter by rating</option>
+      <option value="rating-1">Show 1+ stars</option>
+      <option value="rating-2">Show 2+ stars</option>
+      <option value="rating-3">Show 3+ stars</option>
+      <option value="rating-4">Show 4+ stars</option>
+      <option value="rating-5">Show only 5 stars</option>
+    </select>
   </form>
 
   <ul class="bookmark-list">  <!-- </ul>-->
