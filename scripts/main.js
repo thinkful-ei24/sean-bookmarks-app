@@ -1,7 +1,8 @@
 
-/* global events, domRender, store $ */
+/* global uiEventHandlers, domRender, store $ */
 
 $(function() {
-  events.bindUIListeners();
+  uiEventHandlers.bindAllEvents();
   domRender.showStore();
+  console.log('document loaded');
 });

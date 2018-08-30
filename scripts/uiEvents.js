@@ -1,7 +1,9 @@
 
-const events = (function() {
+/* global $ */
 
-  function bindUIListeners() {
+const uiEventHandlers = (function() {
+
+  function bindAllEvents() {
     handleBookmarkAdd();
     handleVisitClicked();
     handleDetailsClicked();
@@ -10,19 +12,28 @@ const events = (function() {
   }
 
   function handleBookmarkAdd() {
-    $('.button-delete')
+    $('#bookmark-app-form').submit(event => {
+      event.preventDefault();
+      console.log('add bookmark');
+    });
   }
 
   function handleVisitClicked() {
-
+    $('.button-visit-site').click(event => {
+      console.log('visit site');
+    });
   }
 
   function handleDetailsClicked() {
-
+    $('.button-toggle-details').click(event => {
+      console.log('toggle details');
+    });
   }
 
   function handleDeleteClicked() {
-    $('.button-delete')
+    $('.button-delete').click(event => {
+      console.log('delete bookmark');
+    });
   }
 
   // TODO handle combobox and the radiobox stars, splitting the function
@@ -32,7 +43,7 @@ const events = (function() {
   }
 
   return {
-    bindAllUIListeners
+    bindAllEvents
   };
 
 }());
