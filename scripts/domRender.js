@@ -14,7 +14,8 @@ const domRender = (function() {
     }
 
     // block expand
-    let tempBlock = generateListBlock(items.shift(), true, true);
+    // TODO VERY DANGEROUS TEMPORARY CODE (items.shift modifies on every render)
+    // let tempBlock = generateListBlock(items.shift(), true, true);
     if(store.expandSelected && store.selectedBookmarkId) {
       //items.indexOf()
       // console.log(items.shift());
@@ -24,7 +25,7 @@ const domRender = (function() {
     // render condensed
     const renderedHtml = items.map(bookmark => generateListBlock(bookmark))
       .join('');
-    $('.bookmark-list').html(tempBlock + renderedHtml);
+    $('.bookmark-list').html(renderedHtml);
   }
 
   function generateListBlock(bookmark, expanded=false, editable=false) {
