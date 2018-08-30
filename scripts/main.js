@@ -1,5 +1,5 @@
 
-/* global uiEventHandlers, domRender, store $ */
+/* global uiEventHandlers, domRender $ */
 
 $(function() {
   uiEventHandlers.bindAllEvents();

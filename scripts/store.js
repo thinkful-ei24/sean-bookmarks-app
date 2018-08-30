@@ -26,7 +26,7 @@ const store = (function() {
     minDisplayRating: 0,
     // Functions
     addBookmark,
-    findAndUpdateBookmark,
+    findAndUpdateBookmark
 
   };
 

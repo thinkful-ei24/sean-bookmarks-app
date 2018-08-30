@@ -7,14 +7,15 @@ const domRender = (function() {
   function renderMain() {
     let bookmark = {};
     const renderedHtml = generateListBlock(bookmark);
+    console.log(renderedHtml);
     $('.bookmark-list').html(renderedHtml);
   }
 
   function generateListBlock(bookmark) {
     return `<li>
-      <h2>TITLE</h2>
+      <h2>${bookmark.title}</h2>
         <span class="bookmark-rating"></span>
-        <button class="button-delete"></button> <!-- always active, trash icon -->
+        <button class="button-delete"></button>
       <h3 class="bookmark-details">Details</h3>
       <p>DETAILS/DESCRIPTION</p>
       <div class="bookmark-bottom-nav">
@@ -27,4 +28,4 @@ const domRender = (function() {
   return {
     showStore: renderMain
   };
-});
+}());
