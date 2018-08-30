@@ -1,5 +1,25 @@
+* {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+}
 
+#bookmark-app-form {
+
+}
 
 .bookmark-list {
   background-color: pink;
+  list-style: none;
+}
+
+.button-visit-site {
+
+}
+
+.button-toggle-details {
+
+}
+
+.button-delete {
+
 }

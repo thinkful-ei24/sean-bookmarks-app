@@ -15,7 +15,7 @@ const domRender = (function() {
     return `<li>
       <h2>${bookmark.title}</h2>
         <span class="bookmark-rating"></span>
-        <button class="button-delete"></button>
+        <button class="button-delete">Delete</button>
       <h3 class="bookmark-details">Details</h3>
       <p>DETAILS/DESCRIPTION</p>
       <div class="bookmark-bottom-nav">

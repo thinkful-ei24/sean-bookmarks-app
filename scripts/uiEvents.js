@@ -19,19 +19,19 @@ const uiEventHandlers = (function() {
   }
 
   function handleVisitClicked() {
-    $('.button-visit-site').click(event => {
+    $('.bookmark-list').on('click', '.button-visit-site', event => {
       console.log('visit site');
     });
   }
 
   function handleDetailsClicked() {
-    $('.button-toggle-details').click(event => {
+    $('.bookmark-list').on('click', '.button-toggle-details', event => {
       console.log('toggle details');
     });
   }
 
   function handleDeleteClicked() {
-    $('.button-delete').click(event => {
+    $('.bookmark-list').on('click', '.button-delete', event => {
       console.log('delete bookmark');
     });
   }
