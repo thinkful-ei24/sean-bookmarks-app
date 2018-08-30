@@ -20,12 +20,17 @@ const uiEventHandlers = (function() {
     }
   });
 
+  function findId(innerButton) {
+    return $(innerButton).closest('bookmark-block').attr('data-item-id');
+  }
+
   function handleBookmarkAdd() {
     $('#bookmark-app-form').submit(event => {
       event.preventDefault();
       console.log('add button clicked');
       let jsonData = $(event.target).serializeJson();
       // TODO add logic
+      // store.editSelected = true;
       domRender.showStore();
     });
   }
@@ -38,6 +43,11 @@ const uiEventHandlers = (function() {
 
   function handleDetailsClicked() {
     $('.bookmark-list').on('click', '.button-toggle-details', event => {
+      const id = findId(this);
+      store.selectedBookmarkId = id;
+      store.expandSelected = !store.expandSelected;
+      console.log(store.expandSelected);
+      domRender.showStore();
       console.log('toggle details');
     });
   }
