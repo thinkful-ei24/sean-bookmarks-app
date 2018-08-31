@@ -52,10 +52,22 @@ main {
 .bookmark-block {
   border: 1px solid black;
   border-radius: 5px;
-  display: flex;
+  /* display: flex; */
   color: gray;
-  flex-direction: column;
+  /* flex-direction: column; */
   padding: 15px;
+}
+
+.bookmark-block-titleinfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.bookmark-block-titleinfo h2,
+.bookmark-block-titleinfo .rating,
+.button-delete {
+  flex: 1;
 }
 
 .button-visit-site a {
@@ -81,7 +93,7 @@ main {
   }
 }
 
- .rating {
+ /* .rating {
   unicode-bidi: bidi-override;
   direction: rtl;
  }
@@ -96,4 +108,4 @@ main {
 .rating > span:hover ~ span:before {
   content: "\2605";
   position: absolute;
-}
+} */

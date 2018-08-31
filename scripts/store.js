@@ -19,7 +19,8 @@ const store = (function() {
     // Data
     bookmarks: [],
     showErrorNotification: false,
-    errorNotificationText: 'Bookmark names cannot be empty. Please set a valid name.',
+    //'Bookmark names cannot be empty. Please set a valid name.',
+    errorNotificationText: 'Cannot create bookmark. Please check the fields and try again.',
     selectedBookmarkId: '',
     editSelected: false,
     minDisplayRating: 0,

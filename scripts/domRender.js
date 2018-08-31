@@ -66,10 +66,10 @@ const domRender = (function() {
 
     const stars = '&#9734;'.repeat(5-bookmark.rating) + '&#9733;'.repeat(bookmark.rating);
     return `<li class="bookmark-block" data-item-id="${bookmark.id}">
-      <div class="bookmark-top-container">
-        <button class="button-delete">Delete</button>
+      <div class="bookmark-block-titleinfo">
         <h2>${titleField}</h2>
         <span class="rating" data-rating=${bookmark.rating}>${stars}</span>
+        <button class="button-delete">Delete</button>
       </div>
       ${isExpandedBlock ? generateDescription(bookmark.desc) : ''}
       <div class="bookmark-bottom-nav">
@@ -89,12 +89,12 @@ const domRender = (function() {
       <label for="bookmark-url-field">
       <input type="text" placeholder="Bookmark description" id="bookmark-descr" name="bookmark-descr">
       <label for="bookmark-descr"></label>
-      <fieldset class="rating" name="rating-selector" id="rating-selector">
-        <input type="radio" name="1-star" class="star-rating"><label for="1-star"></label>
-        <input type="radio" name="2-star" class="star-rating"><label for="2-star"></label>
-        <input type="radio" name="3-star" class="star-rating"><label for="3-star"></label>
-        <input type="radio" name="5-star" class="star-rating"><label for="4-star"></label>
-        <input type="radio" name="4-star" class="star-rating"><label for="5-star"></label>
+      <fieldset name="rating-selector" id="rating-selector">
+        <input type="radio" name="set-rating" class="star-rating" value="1"><label for="1-star"></label>
+        <input type="radio" name="set-rating" class="star-rating" value="2"><label for="2-star"></label>
+        <input type="radio" name="set-rating" class="star-rating" value="3"><label for="3-star"></label>
+        <input type="radio" name="set-rating" class="star-rating" value="4"><label for="4-star"></label>
+        <input type="radio" name="set-rating" class="star-rating" value="5"><label for="5-star"></label>
       </fieldset>
       <input type="submit" value="Create new bookmark">
       <button type="button" id="button-cancel">Cancel</button>
