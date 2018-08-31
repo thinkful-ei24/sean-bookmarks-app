@@ -31,13 +31,10 @@ const uiEventHandlers = (function() {
       event.preventDefault();
       const jsonData = JSON.parse(form.serializeJson());
 
-      console.log(jsonData);
-
       let newBookmark = {
         title: jsonData['bookmark-title'],
         url: jsonData['bookmark-url'],
         desc:jsonData['bookmark-descr'],
-        // TODO grab rating from form
         rating: jsonData['set-rating']
       };
 
@@ -49,7 +46,6 @@ const uiEventHandlers = (function() {
         domRender.showStore();
       };
 
-      // error callback
       const onFail = function(response) {
         store.showErrorNotification = true;
         domRender.showStore();

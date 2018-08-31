@@ -51,23 +51,36 @@ main {
 
 .bookmark-block {
   border: 1px solid black;
+  padding: 5px 15px;
+  margin: 10px 5px;
   border-radius: 5px;
-  /* display: flex; */
+  display: flex;
   color: gray;
-  /* flex-direction: column; */
-  padding: 15px;
+  flex-direction: column;
 }
 
 .bookmark-block-titleinfo {
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-end;
+}
+
+.bookmaark-block-titleinfo h2 {
+  flex-basis: auto;
+  justify-content: flex-end;
 }
 
 .bookmark-block-titleinfo h2,
 .bookmark-block-titleinfo .rating,
 .button-delete {
-  flex: 1;
+  /* flex: 25% 0 auto; */
+}
+
+.bookmark-block-titleinfo .rating {
+  /* padding: 0 15px; */
+  align-self: flex-end;
 }
 
 .button-visit-site a {
@@ -93,6 +106,52 @@ main {
   }
 }
 
+fieldset {
+  border: none;
+}
+
+#bookmark-add-form {
+  margin: 10px auto;
+  padding: 10px;
+  display: border-box;
+  background-color: lightgray;
+}
+
+.form-content {
+  padding: 5px;
+  overflow: hidden;
+}
+
+.form-content input {
+  /* margin-bottom: 5px;
+  padding-left: 15px; */
+}
+
+.form-content label {
+  /* float: left;
+  width: 40px; */
+  display: inline-block;
+}
+
+.form-content input[type=text] {
+  height: 30px;
+  /* width: calc(100% - 200px); */
+  display: block;
+  margin-left: 40px;
+  width: 100%;
+}
+
+.form-content button {
+  /* width: calc(100% - 200px); */
+}
+
+.rating-selector {
+  margin-left: 30px;
+}
+
+.hidden {
+  display: none;
+}
  /* .rating {
   unicode-bidi: bidi-override;
   direction: rtl;
