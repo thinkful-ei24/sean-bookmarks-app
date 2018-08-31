@@ -32,7 +32,7 @@ const uiEventHandlers = (function() {
 
       // TODO: BOOKMARK INFO ISN'T TAKEN FROM FIELDS
       let newBookmark = {
-        title:'New bookmark', url:'https://www.google.com', 
+        title:'New bookmark', url:'https://www.google.com', desc:'Hardcoded bookmark info',
         rating: Math.floor(Math.random() * 5) + 1};
 
       const onSuccess = function(response) {
@@ -52,7 +52,7 @@ const uiEventHandlers = (function() {
         domRender.showStore();
       };
 
-      api.createBookmark(newBookmark.title, newBookmark.url, onSuccess, onFail);
+      api.createBookmark(newBookmark, onSuccess, onFail);
     });
   }
 

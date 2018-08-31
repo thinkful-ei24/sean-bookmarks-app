@@ -4,14 +4,14 @@
 const api = (function() {
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/sean/bookmarks';
 
-  const createBookmark = function(title, url, success, error) {
+  const createBookmark = function(bookmarkInfo, success, error) {
     // create new obj from title
-    const bookmark = { title, url };
 
+    console.log(JSON.stringify(bookmarkInfo));
     const data = {
       method: 'POST',
       contentType: 'application/json',
-      data: JSON.stringify(bookmark)
+      data: JSON.stringify(bookmarkInfo)
     };
 
     $.ajax(BASE_URL, data)
@@ -19,7 +19,7 @@ const api = (function() {
       .fail(error);
   };
 
-  const getBookmarks = function(id, callback) {
+  const getBookmarks = function(callback) {
     $.getJSON(BASE_URL, callback);
   };
 

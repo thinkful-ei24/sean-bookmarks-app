@@ -8,7 +8,7 @@ const domRender = (function() {
     let items = store.bookmarks;
 
     // rating filter
-    const minRating = store.minDisplayRating;
+    let minRating = store.minDisplayRating;
     if(minRating > 0) {
       items = items.filter(bookmark => bookmark.rating >= minRating);
     }
@@ -21,7 +21,7 @@ const domRender = (function() {
     }
 
     // render condensed
-    const renderedHtml = items.map(bookmark => generateListBlock(bookmark))
+    const renderedHtml = items.map(bookmark => generateListBlock(bookmark, true))
       .join('');
     $('.bookmark-list').html(renderedHtml);
   }
