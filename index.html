@@ -14,19 +14,21 @@
 <body>
   
   <h1>Bookmark App</h1>
-  <button class='button-show-form'>Add Bookmark</button>
+
+  <section id="top-controls-bar">
+    <button class='button-show-form'>Add Bookmark</button>
+
+    <select name="rating-filter" id="dropdown-rating-filter">
+        <option value="0" selected>Filter by rating</option>
+        <option value="1">Show 1+ stars</option>
+        <option value="2">Show 2+ stars</option>
+        <option value="3">Show 3+ stars</option>
+        <option value="4">Show 4+ stars</option>
+        <option value="5">Show only 5 stars</option>
+    </select>
+  </section>
 
   <form id="bookmark-add-form"></form>
-
-  <select name="rating-filter" id="dropdown-rating-filter">
-      <option value="0" selected>Filter by rating</option>
-      <option value="1">Show 1+ stars</option>
-      <option value="2">Show 2+ stars</option>
-      <option value="3">Show 3+ stars</option>
-      <option value="4">Show 4+ stars</option>
-      <option value="5">Show only 5 stars</option>
-  </select>
-
     <!-- <form id='bookmark-app-form'>
       <div class='top-bar'>
         <button name='button-add'>Add Bookmark</button>
