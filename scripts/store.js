@@ -2,7 +2,7 @@
 const store = (function() {
 
   function addBookmark(bookmark) {
-    this.bookmarks.push(bookmark);
+    this.bookmarks.unshift(bookmark);
   }
 
   function findAndUpdateBookmark(id, objProperties) {
@@ -24,10 +24,10 @@ const store = (function() {
     bookmarks: [],
     showErrorNotification: false,
     errorNotificationText: 'Bookmark names cannot be empty. Please set a valid name.',
-    selectedBookmarkId: null,
-    expandSelected: false,
+    selectedBookmarkId: '',
     editSelected: false,
     minDisplayRating: 0,
+    adding: false,
     // Functions
     addBookmark,
     findAndUpdateBookmark,

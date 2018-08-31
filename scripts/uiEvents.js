@@ -4,7 +4,9 @@
 const uiEventHandlers = (function() {
 
   function bindAllEvents() {
+    handleAddButtonClicked();
     handleBookmarkAdd();
+    handleFormCancel();
     handleVisitClicked();
     handleDetailsClicked();
     handleDeleteClicked();
@@ -25,34 +27,61 @@ const uiEventHandlers = (function() {
   }
 
   function handleBookmarkAdd() {
-    $('#bookmark-app-form').submit(event => {
+    const form = $('#bookmark-add-form');
+    form.submit(event => {
       event.preventDefault();
-      store.editSelected = true;
-      store.expandSelected = true;
+      const jsonData = JSON.parse(form.serializeJson());
 
-      // TODO: BOOKMARK INFO ISN'T TAKEN FROM FIELDS
       let newBookmark = {
-        title:'New bookmark', url:'https://www.google.com', desc:'Hardcoded bookmark info',
+        title: jsonData['bookmark-title'],
+        url: jsonData['bookmark-url'],
+        desc:jsonData['bookmark-descr'],
+        // TODO grab rating from form
         rating: Math.floor(Math.random() * 5) + 1};
 
       const onSuccess = function(response) {
-        console.log(response.id);
         newBookmark.id = response.id;
-        // store.selectedBookmarkId = newBookmark.id;
         store.addBookmark(newBookmark);
-        // resest ui state
-        store.editSelected = false;
-        store.expandSelected = false;
+
+        store.adding = false;
         domRender.showStore();
       };
 
       // error callback
       const onFail = function(response) {
-        console.log('name not valid. server rejected post');
+        store.showErrorNotification = true;
         domRender.showStore();
       };
 
       api.createBookmark(newBookmark, onSuccess, onFail);
+    });
+  }
+
+  function handleAddButtonClicked() {
+    $('.button-show-form').click(event => {
+
+      let newBookmark = {
+        title: 'dummy bookmark',
+        url: 'http://www.google.com',
+        desc: 'automatically generated bookmark stub for debugging',
+        rating: Math.floor(Math.random() * 5) + 1};
+      
+      api.createBookmark(newBookmark, (response) => {
+        store.addBookmark(newBookmark);
+        domRender.showStore();
+      }, function(){});
+
+
+      store.adding = !store.adding;
+      domRender.showStore();
+    });
+  }
+  
+  function handleFormCancel() {
+    $('#bookmark-add-form').on('click', '#button-cancel', event => {
+      console.log('cancel');
+      store.adding = false;
+      domRender.showStore();
     });
   }
 
@@ -65,18 +94,25 @@ const uiEventHandlers = (function() {
   function handleDetailsClicked() {
     $('.bookmark-list').on('click', '.button-toggle-details', event => {
       const id = getBookmarkIdFromEvent(event.currentTarget);
-      store.selectedBookmarkId = id;
-      store.expandSelected = !store.expandSelected;
-      console.log(store.expandSelected);
+      const lastId = store.selectedBookmarkId;
+      if(lastId === id) {
+        store.selectedBookmarkId = '';
+      } else {
+        store.selectedBookmarkId = id;
+      }
+      // store.expandSelected = !store.expandSelected;
+      // console.log('show expanded view: ' + store.expandSelected);
       domRender.showStore();
-      console.log('toggle details');
     });
   }
 
   function handleDeleteClicked() {
     $('.bookmark-list').on('click', '.button-delete', event => {
       const id = getBookmarkIdFromEvent(event.currentTarget);
-      console.log(id);
+      if(!confirm('Delete bookmark?')) {
+        return;
+      }
+
       api.deleteBookmark(id, () => {
         store.findAndDelete(id);
         domRender.showStore();
