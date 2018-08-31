@@ -10,10 +10,6 @@ const store = (function() {
     Object.assign(selectedBookmark, objProperties);
   }
 
-  function findBookmark(id) {
-    return this.bookmarks.find(bookmark => bookmark.id === id);
-  }
-
   const findAndDelete = function(id) {
     this.bookmarks = this.bookmarks.filter(item => item.id !== id);
   };

@@ -7,7 +7,6 @@ const uiEventHandlers = (function() {
     handleAddButtonClicked();
     handleBookmarkAdd();
     handleFormCancel();
-    handleVisitClicked();
     handleDetailsClicked();
     handleDeleteClicked();
     handleMinRatingChange();
@@ -42,7 +41,7 @@ const uiEventHandlers = (function() {
       const onSuccess = function(response) {
         newBookmark.id = response.id;
         store.addBookmark(newBookmark);
-
+        store.showErrorNotification = false;
         store.adding = false;
         domRender.showStore();
       };
@@ -59,35 +58,23 @@ const uiEventHandlers = (function() {
 
   function handleAddButtonClicked() {
     $('.button-show-form').click(event => {
-
-      let newBookmark = {
-        title: 'dummy bookmark',
-        url: 'http://www.google.com',
-        desc: 'automatically generated bookmark stub for debugging',
-        rating: Math.floor(Math.random() * 5) + 1};
-      
-      api.createBookmark(newBookmark, (response) => {
-        store.addBookmark(newBookmark);
-        domRender.showStore();
-      }, function(){});
-
-
-      store.adding = !store.adding;
+      if(store.adding) {
+        if(confirm('Are you sure you want to stop adding this bookmark?')) {
+          store.showErrorNotification = false;
+          store.adding = false;
+        }
+      } else {
+        store.adding = true;
+      }
       domRender.showStore();
     });
   }
   
   function handleFormCancel() {
     $('#bookmark-add-form').on('click', '#button-cancel', event => {
-      console.log('cancel');
+      store.showErrorNotification = false;
       store.adding = false;
       domRender.showStore();
-    });
-  }
-
-  function handleVisitClicked() {
-    $('.bookmark-list').on('click', '.button-visit-site', event => {
-      console.log('visit site');
     });
   }
 
@@ -100,8 +87,9 @@ const uiEventHandlers = (function() {
       } else {
         store.selectedBookmarkId = id;
       }
-      // store.expandSelected = !store.expandSelected;
-      // console.log('show expanded view: ' + store.expandSelected);
+
+      store.showErrorNotification = false;
+
       domRender.showStore();
     });
   }

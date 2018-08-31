@@ -7,6 +7,13 @@ const domRender = (function() {
   function renderMain() {
     let items = store.bookmarks;
 
+    const errorMessageContainer = $('.error-message-container');
+    if(store.showErrorNotification) {
+      errorMessageContainer.html(generateErrorMessageBlock());
+    } else {
+      errorMessageContainer.html('');
+    }
+
     // form drawing
     if(store.adding) {
       if($('#bookmark-add-form').is(':empty')) {
@@ -36,28 +43,10 @@ const domRender = (function() {
     $('.bookmark-list').html(renderedHtml);
   }
 
-  function generateAddFormContents() {
-    return `
-    <fieldset>
-      <legend>Add a new bookmark</legend>
-      <input type="text" placeholder="Bookmark title" id="bookmark-title" name="bookmark-title">
-      <label for="bookmark-title-field">
-      <input type="text" placeholder="http://www.google.com" id="bookmark-url" name="bookmark-url">
-      <label for="bookmark-url-field">
-      <input type="text" placeholder="Bookmark description" id="bookmark-descr" name="bookmark-descr">
-      <label for="bookmark-descr"></label>
-      <fieldset class="rating" name="rating-selector" id="rating-selector">
-        <input type="radio" name="1-star" class="star-rating"><label for="1-star"></label>
-        <input type="radio" name="2-star" class="star-rating"><label for="2-star"></label>
-        <input type="radio" name="3-star" class="star-rating"><label for="3-star"></label>
-        <input type="radio" name="5-star" class="star-rating"><label for="4-star"></label>
-        <input type="radio" name="4-star" class="star-rating"><label for="5-star"></label>
-      </fieldset>
-      <input type="submit" value="Create new bookmark">
-      <button type="button" id="button-cancel">Cancel</button>
-    </fieldset>`;
+  function generateErrorMessageBlock() {
+    return `<span class="error-message">${store.errorNotificationText}</span>`;
   }
-  // TODO use this
+
   function generateListBlock(bookmark, selectedBookmarkId) {
     let isExpandedBlock = false;
     if(selectedBookmarkId) {
@@ -89,6 +78,28 @@ const domRender = (function() {
       </div>
     </li>`;
   }
+
+  function generateAddFormContents() {
+    return `
+    <fieldset>
+      <legend>Add a new bookmark</legend>
+      <input type="text" placeholder="Bookmark title" id="bookmark-title" name="bookmark-title">
+      <label for="bookmark-title-field">
+      <input type="text" placeholder="http://www.google.com" id="bookmark-url" name="bookmark-url">
+      <label for="bookmark-url-field">
+      <input type="text" placeholder="Bookmark description" id="bookmark-descr" name="bookmark-descr">
+      <label for="bookmark-descr"></label>
+      <fieldset class="rating" name="rating-selector" id="rating-selector">
+        <input type="radio" name="1-star" class="star-rating"><label for="1-star"></label>
+        <input type="radio" name="2-star" class="star-rating"><label for="2-star"></label>
+        <input type="radio" name="3-star" class="star-rating"><label for="3-star"></label>
+        <input type="radio" name="5-star" class="star-rating"><label for="4-star"></label>
+        <input type="radio" name="4-star" class="star-rating"><label for="5-star"></label>
+      </fieldset>
+      <input type="submit" value="Create new bookmark">
+      <button type="button" id="button-cancel">Cancel</button>
+    </fieldset>`;
+  }
   
   // // TODO set a selected bookmark id and just check against that
   // function generateListBlock(bookmark, expanded=false, editable=false) {
@@ -110,7 +121,7 @@ const domRender = (function() {
   // }
 
   function generateVisitButton(url) {
-    return `<button class="button-visit-site"><a href="${url}">Visit site</a></button>`;
+    return `<button class="button-visit-site"><a href="${url}" target="_blank">Visit site</a></button>`;
   }
 
   function generateDescription(description) {
