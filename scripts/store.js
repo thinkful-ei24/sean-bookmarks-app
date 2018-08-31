@@ -1,21 +1,24 @@
 
 const store = (function() {
 
-
   function addBookmark(bookmark) {
     this.bookmarks.push(bookmark);
   }
 
-  function updateBookmark(id, objProperties) {
-    const selectedBookmark = findBookmark(id);
+  function findAndUpdateBookmark(id, objProperties) {
+    const selectedBookmark = this.bookmarks.find(bookmark => bookmark.id === id);
     Object.assign(selectedBookmark, objProperties);
   }
 
   function findBookmark(id) {
-
+    return this.bookmarks.find(bookmark => bookmark.id === id);
   }
 
+  const findAndDelete = function(id) {
+    this.bookmarks = this.bookmarks.filter(item => item.id !== id);
+  };
 
+  console.log('store module created');
   return {
     // Data
     bookmarks: [],
@@ -27,7 +30,8 @@ const store = (function() {
     minDisplayRating: 0,
     // Functions
     addBookmark,
-    updateBookmark
+    findAndUpdateBookmark,
+    findAndDelete
   };
 
 }());

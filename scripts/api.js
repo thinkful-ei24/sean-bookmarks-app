@@ -4,15 +4,14 @@
 const api = (function() {
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/sean/bookmarks';
 
-  const createBookmark = function(name, success, error) {
-    // create new obj from name
-    const bookmark = { name };
+  const createBookmark = function(title, url, success, error) {
+    // create new obj from title
+    const bookmark = { title, url };
 
     const data = {
       method: 'POST',
       contentType: 'application/json',
-      data: JSON.stringify(bookmark),
-      success, error
+      data: JSON.stringify(bookmark)
     };
 
     $.ajax(BASE_URL, data)
@@ -29,27 +28,27 @@ const api = (function() {
       url: '/' + id,
       method: 'PATCH',
       contentType: 'application/json',
-      data: newData,
+      data: JSON.stringify(newData)
     };
-    $.ajax(data)
+    $.ajax(BASE_URL + '/' + id, data)
       .done(success)
       .fail(error);
   };
 
   const deleteBookmark = function(id, callback) {
     const data = {
-      url: '/' + id,
       method: 'DELETE',
       contentType: 'application/json',
       success: callback
     };
-    $.ajax(data);
+    $.ajax(BASE_URL + '/' + id, data);
   };
 
+  console.log('api module created');
   return {
     createBookmark,
     getBookmarks,
     updateBookmark,
     deleteBookmark
-  }
+  };
 }());

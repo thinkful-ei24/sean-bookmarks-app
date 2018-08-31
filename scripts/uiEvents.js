@@ -1,5 +1,5 @@
 
-/* global store, domRender $ */
+/* global store, api, domRender, $ */
 
 const uiEventHandlers = (function() {
 
@@ -20,18 +20,39 @@ const uiEventHandlers = (function() {
     }
   });
 
-  function findId(innerButton) {
-    return $(innerButton).closest('bookmark-block').attr('data-item-id');
+  function getBookmarkIdFromEvent(innerButton) {
+    return $(innerButton).closest('.bookmark-block').data('item-id');
   }
 
   function handleBookmarkAdd() {
     $('#bookmark-app-form').submit(event => {
       event.preventDefault();
-      console.log('add button clicked');
-      let jsonData = $(event.target).serializeJson();
-      // TODO add logic
-      // store.editSelected = true;
-      domRender.showStore();
+      store.editSelected = true;
+      store.expandSelected = true;
+
+      // TODO: BOOKMARK INFO ISN'T TAKEN FROM FIELDS
+      let newBookmark = {
+        title:'New bookmark', url:'https://www.google.com', 
+        rating: Math.floor(Math.random() * 5) + 1};
+
+      const onSuccess = function(response) {
+        console.log(response.id);
+        newBookmark.id = response.id;
+        // store.selectedBookmarkId = newBookmark.id;
+        store.addBookmark(newBookmark);
+        // resest ui state
+        store.editSelected = false;
+        store.expandSelected = false;
+        domRender.showStore();
+      };
+
+      // error callback
+      const onFail = function(response) {
+        console.log('name not valid. server rejected post');
+        domRender.showStore();
+      };
+
+      api.createBookmark(newBookmark.title, newBookmark.url, onSuccess, onFail);
     });
   }
 
@@ -43,7 +64,7 @@ const uiEventHandlers = (function() {
 
   function handleDetailsClicked() {
     $('.bookmark-list').on('click', '.button-toggle-details', event => {
-      const id = findId(this);
+      const id = getBookmarkIdFromEvent(event.currentTarget);
       store.selectedBookmarkId = id;
       store.expandSelected = !store.expandSelected;
       console.log(store.expandSelected);
@@ -54,28 +75,27 @@ const uiEventHandlers = (function() {
 
   function handleDeleteClicked() {
     $('.bookmark-list').on('click', '.button-delete', event => {
-      console.log('delete bookmark');
+      const id = getBookmarkIdFromEvent(event.currentTarget);
+      console.log(id);
+      api.deleteBookmark(id, () => {
+        store.findAndDelete(id);
+        domRender.showStore();
+      });
     });
   }
 
-  // TODO handle combobox and the radiobox stars, splitting the function
-  // only if it's needed
   function handleMinRatingChange() {
     $('#dropdown-rating-filter').change(event => {
-      // console.log('rating changed');
-      // let selectedElementName = $(event.currentTarget).JSON.parse(jsonData)['rating-filter'];
-      // let rating = parseInt(selectedElementName.slice(-1), 10);
-      // console.log(rating);
-      console.log(parseInt(event.currentTarget.value, 10));
       store.minDisplayRating = parseInt(event.currentTarget.value, 10);
       domRender.showStore();
     });
 
-        // $('.star-rating-filter').change(event => {
+    // $('.star-rating-filter').change(event => {
 
     // });
   }
 
+  console.log('event module created');
   return {
     bindAllEvents
   };

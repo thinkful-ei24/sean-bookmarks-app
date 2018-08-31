@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- TODO: region?-->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Bookmark App</title>
-  <!-- TODO: font, normalize.css -->
-  <!-- TODO: styles (from folder) -->
+  <!-- font, normalize.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+  <!-- styles (from folder) -->
   <link rel="stylesheet" href="styles/index.css">
 </head>
 <body>
@@ -35,34 +36,7 @@
     </select>
   </form>
 
-  <ul class="bookmark-list">  <!-- </ul>-->
-      <!-- TODO TEMPORARY-->
-      <!--
-        Bookmarks still need to be assigned an id and have that set in the element
-        data
-      -->
-
-      <!-- style with flexbox and then turn into a template. add classes as needed-->
-      <!-- CONDENSED-->
-      <li>
-        <h2>TITLE</h2>
-        <span class="bookmark-rating"></span>
-        <button class="button-delete"></button> <!-- add onnMouseOver and media query, use trash icon-->
-      </li>
-      <!-- EXPANDED -->
-      <li>
-          <!-- top bar -->
-          <h2>TITLE</h2>
-          <span class="bookmark-rating"></span>
-          <button class="button-delete"></button> <!-- always active, trash icon -->
-          <h3 class="bookmark-details">Details</h3>
-          <p>DETAILS/DESCRIPTION</p>
-          <div class="bookmark-bottom-nav">
-              <button>Visit site</button>
-              <button>Hide details</button>
-          </div>
-        </li>
-  </ul>
+  <ul class="bookmark-list"></ul>
 
   <!-- imports -->
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

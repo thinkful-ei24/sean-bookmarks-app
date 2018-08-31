@@ -26,6 +26,12 @@ const domRender = (function() {
     $('.bookmark-list').html(renderedHtml);
   }
 
+  // TODO use this
+  function generateListBlock(bookmark, selectedBookmarkId) {
+
+  }
+  
+  // TODO set a selected bookmark id and just check against that
   function generateListBlock(bookmark, expanded=false, editable=false) {
     // TODO is it better to split stars into individual spans? That may be
     // needed for the component. For now, just add and track them manually
@@ -36,7 +42,7 @@ const domRender = (function() {
         <h2>${bookmark.title}</h2>
         <span class="rating" data-rating=${bookmark.rating}>${stars}</span>
       </div>
-      ${expanded ? generateDescription(bookmark.description) : ''}
+      ${expanded ? generateDescription(bookmark.desc) : ''}
       <div class="bookmark-bottom-nav">
         ${expanded ? generateVisitButton(bookmark.url) : ''}
         <button class="button-toggle-details">${expanded ? 'Hide details' : 'Show details'}</button>
@@ -53,6 +59,7 @@ const domRender = (function() {
     <p>${description}</p>`;
   }
 
+  console.log('render module created');
   return {
     showStore: renderMain
   };

@@ -1,5 +1,5 @@
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 18px;
   box-sizing: border-box;
 }
@@ -30,13 +30,17 @@
 }
 
 .button-delete {
-  visibility: hidden;
   align-self: flex-end;
 }
 
-.bookm
-.bookmark-block:hover .button-delete {
-  visibility: visible;
+@media screen and (min-width: 768px) {
+  .button-delete {
+    visibility: hidden;
+  }
+
+  .bookmark-block:hover .button-delete {
+    visibility: visible;
+  }
 }
 
  .rating {
@@ -48,7 +52,6 @@
   display: inline-block;
   position: relative;
   width: 1.1em;
-  cursor: grab;
 }
 
 /* ANIMATION FOR STAR RATING SPAN*/
