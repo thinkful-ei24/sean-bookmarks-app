@@ -91,7 +91,7 @@ const domRender = (function() {
         <label for="bookmark-url">URL</label>
         <input type="text" placeholder="http://www.google.com" id="bookmark-url" name="bookmark-url">
         <label for="bookmark-descr">Details</label>
-        <input type="text" rows="3" placeholder="Bookmark description" id="bookmark-descr" name="bookmark-descr">
+        <input type="text" placeholder="Bookmark description" id="bookmark-descr" name="bookmark-descr">
         <label for="rating-selector">Rating</label>
         <fieldset name="choose-rating" id="rating-selector">
           <input type="radio" name="set-rating" class="star-rating" value="1"><label for="1-star"></label>
