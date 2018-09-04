@@ -26,6 +26,14 @@ const domRender = (function() {
       form.addClass('hidden');
     }
 
+    // special case for an empty list
+    const bookmarkUl = $('.bookmark-list');
+    if(store.bookmarks.length === 0) {
+      bookmarkUl.addClass('hidden');
+    } else {
+      bookmarkUl.removeClass('hidden');
+    }
+
 
     // rating filter
     let minRating = store.minDisplayRating;
