@@ -10,6 +10,10 @@ h1 {
   text-align: center;
 }
 
+body {
+  background-color: #efefef;
+}
+
 main {
   max-width: 800px;
   margin-left: auto;
@@ -155,33 +159,25 @@ fieldset {
 /*   TEMPORARY STYLING    */
 
 #top-controls-bar {
-  background-color: #0077c2;
+  background-color: #0069c0;
   padding: 10px;
 }
 
 h1 {
-  background-color: #0077c2;
+  background-color: #0069c0;
   color: #ffffff;
   height: 60px;
-}
-
-main {
-  background-color: #42a5f5;
-}
-
-body {
-  background-color: #e0e0e0;
-  background-color: white;
+  padding-top: 5px;
 }
 
 #bookmark-add-form {
-  background-color: #455a64;
-  color: white;
+  background-color: #42a5f5;
+  border: 3px solid black;
 }
 
 .bookmark-block {
-  background-color: #b0bec5;
-  color: white;
+  background-color: #efefef;
+  color:black;
 }
 
 .bookmark-block-titleinfo {
@@ -198,6 +194,7 @@ body {
   padding: 0 15px 15px;
   border: 2px solid black;
   margin: 0px;
+  background-color: #2196f3;
 }
 
 input[type=text] {
@@ -205,6 +202,8 @@ input[type=text] {
   padding-left: 10px;
   margin-bottom: 10px;
   display: block;
+  background-color: #efefef;
+  /* border: 1px solid #6ec6ff; */
 }
 
 form legend {
@@ -227,10 +226,12 @@ form legend {
 }
 
 button {
-  background-color: #819ca9;
-  border: 2px solid #29434e;
-  color:#ffffff;
+  background-color: #bdbdbd;
+  border-radius: 3px;
+  border: 2px solid black;
+  color: black;
 }
+
  /* .rating {
   unicode-bidi: bidi-override;
   direction: rtl;

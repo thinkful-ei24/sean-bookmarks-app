@@ -100,7 +100,7 @@ const domRender = (function() {
           <input type="radio" name="set-rating" class="star-rating" value="4"><label for="4-star"></label>
           <input type="radio" name="set-rating" class="star-rating" value="5"><label for="5-star"></label>
         </fieldset>
-        <input type="submit" value="Create new bookmark">
+        <button type="submit">Create new bookmark</button>
         <button type="button" id="button-cancel">Cancel</button>
       </fieldset>`;
   }
