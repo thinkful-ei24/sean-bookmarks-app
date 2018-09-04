@@ -69,7 +69,7 @@ const domRender = (function() {
 
     const stars = '&#9733;'.repeat(bookmark.rating) + '&#9734;'.repeat(5-bookmark.rating);
     return `<li class="bookmark-block" data-item-id="${bookmark.id}">
-      <div class="bookmark-block-titleinfo"
+      <div class="bookmark-block-titleinfo ${isExpandedBlock ? 'underline' : ''}"
         <h2>${titleField}</h2>
         <span class="rating" data-rating=${bookmark.rating}>${stars}</span>
         <button class="button-delete">Delete</button>
@@ -104,25 +104,6 @@ const domRender = (function() {
         <button type="button" id="button-cancel">Cancel</button>
       </fieldset>`;
   }
-  
-  // // TODO set a selected bookmark id and just check against that
-  // function generateListBlock(bookmark, expanded=false, editable=false) {
-  //   // TODO is it better to split stars into individual spans? That may be
-  //   // needed for the component. For now, just add and track them manually
-  //   const stars = '&#9734;'.repeat(5-bookmark.rating) + '&#9733;'.repeat(bookmark.rating);
-  //   return `<li class="bookmark-block" data-item-id="${bookmark.id}">
-  //     <div class="bookmark-top-container">
-  //       <button class="button-delete">Delete</button>
-  //       <h2>${bookmark.title}</h2>
-  //       <span class="rating" data-rating=${bookmark.rating}>${stars}</span>
-  //     </div>
-  //     ${expanded ? generateDescription(bookmark.desc) : ''}
-  //     <div class="bookmark-bottom-nav">
-  //       ${expanded ? generateVisitButton(bookmark.url) : ''}
-  //       <button class="button-toggle-details">${expanded ? 'Hide details' : 'Show details'}</button>
-  //     </div>
-  //   </li>`;
-  // }
 
   function generateVisitButton(url) {
     return `<button class="button-visit-site"><a href="${url}" target="_blank">Visit site</a></button>`;
@@ -130,7 +111,7 @@ const domRender = (function() {
 
   function generateDescription(description) {
     return `<h3 class="bookmark-details">Details</h3>
-    <p>${description}</p>`;
+    <p class="details-text">${description}</p>`;
   }
 
   console.log('render module created');
