@@ -1,7 +1,7 @@
 
 /* globals store, $ */
 
-const domRender = (function() {
+const render = (function() {
 
   // main renderer call
   function renderMain() {
@@ -34,18 +34,10 @@ const domRender = (function() {
       bookmarkUl.removeClass('hidden');
     }
 
-
     // rating filter
     let minRating = store.minDisplayRating;
     if(minRating > 0) {
       items = items.filter(bookmark => bookmark.rating >= minRating);
-    }
-
-    // block expand
-    if(store.expandSelected && store.selectedBookmarkId) {
-      //items.indexOf()
-      // console.log(items.shift());
-      // tempBlock = generateListBlock(items.shift(), true, false);
     }
 
     // render condensed
@@ -122,7 +114,6 @@ const domRender = (function() {
     <p class="details-text">${description}</p>`;
   }
 
-  console.log('render module created');
   return {
     showStore: renderMain
   };

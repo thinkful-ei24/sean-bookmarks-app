@@ -1,5 +1,5 @@
 
-/* global store, api, domRender, $ */
+/* global store, api, render, $ */
 
 const uiEventHandlers = (function() {
 
@@ -12,6 +12,7 @@ const uiEventHandlers = (function() {
     handleMinRatingChange();
   }
 
+  // helper function for form data
   $.fn.extend({
     serializeJson: function() {
       const formData = new FormData(this[0]);
@@ -43,12 +44,12 @@ const uiEventHandlers = (function() {
         store.addBookmark(newBookmark);
         store.showErrorNotification = false;
         store.adding = false;
-        domRender.showStore();
+        render.showStore();
       };
 
       const onFail = function(response) {
         store.showErrorNotification = true;
-        domRender.showStore();
+        render.showStore();
       };
 
       api.createBookmark(newBookmark, onSuccess, onFail);
@@ -65,7 +66,7 @@ const uiEventHandlers = (function() {
       } else {
         store.adding = true;
       }
-      domRender.showStore();
+      render.showStore();
     });
   }
   
@@ -73,7 +74,7 @@ const uiEventHandlers = (function() {
     $('#bookmark-add-form').on('click', '#button-cancel', event => {
       store.showErrorNotification = false;
       store.adding = false;
-      domRender.showStore();
+      render.showStore();
     });
   }
 
@@ -89,7 +90,7 @@ const uiEventHandlers = (function() {
 
       store.showErrorNotification = false;
 
-      domRender.showStore();
+      render.showStore();
     });
   }
 
@@ -102,7 +103,7 @@ const uiEventHandlers = (function() {
 
       api.deleteBookmark(id, () => {
         store.findAndDelete(id);
-        domRender.showStore();
+        render.showStore();
       });
     });
   }
@@ -110,15 +111,10 @@ const uiEventHandlers = (function() {
   function handleMinRatingChange() {
     $('#dropdown-rating-filter').change(event => {
       store.minDisplayRating = parseInt(event.currentTarget.value, 10);
-      domRender.showStore();
+      render.showStore();
     });
-
-    // $('.star-rating-filter').change(event => {
-
-    // });
   }
 
-  console.log('event module created');
   return {
     bindAllEvents
   };

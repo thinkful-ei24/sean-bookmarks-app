@@ -1,14 +1,13 @@
 
-/* global store, api, uiEventHandlers, domRender $ */
+/* global store, api, uiEventHandlers, render $ */
 
 $(document).ready(function() {
 
   uiEventHandlers.bindAllEvents();
-  domRender.showStore();
+  render.showStore();
   
   api.getBookmarks((bookmarks) => {
-    console.log(bookmarks);
     bookmarks.forEach((bookmark) => store.addBookmark(bookmark));
-    domRender.showStore();
+    render.showStore();
   });
 });

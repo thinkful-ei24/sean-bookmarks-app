@@ -5,9 +5,6 @@ const api = (function() {
   const BASE_URL = 'https://thinkful-list-api.herokuapp.com/sean/bookmarks';
 
   const createBookmark = function(bookmarkInfo, success, error) {
-    // create new obj from title
-
-    console.log(JSON.stringify(bookmarkInfo));
     const data = {
       method: 'POST',
       contentType: 'application/json',
@@ -44,7 +41,6 @@ const api = (function() {
     $.ajax(BASE_URL + '/' + id, data);
   };
 
-  console.log('api module created');
   return {
     createBookmark,
     getBookmarks,

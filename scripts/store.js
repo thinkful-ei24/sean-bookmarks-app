@@ -14,7 +14,6 @@ const store = (function() {
     this.bookmarks = this.bookmarks.filter(item => item.id !== id);
   };
 
-  console.log('store module created');
   return {
     // Data
     bookmarks: [],
