@@ -5,8 +5,6 @@
 }
 
 h1 {
-  /* margin-left: auto;
-  margin-right: auto; */
   text-align: center;
 }
 
@@ -40,7 +38,6 @@ main {
 .bookmark-list {
   list-style: none;
   padding-left: 0;
-  /* margin-top: 10px; */
 }
 
 #top-controls-bar {
@@ -75,14 +72,7 @@ main {
   justify-content: flex-end;
 }
 
-.bookmark-block-titleinfo h2,
-.bookmark-block-titleinfo .rating,
-.button-delete {
-  /* flex: 25% 0 auto; */
-}
-
 .bookmark-block-titleinfo .rating {
-  /* padding: 0 15px; */
   align-self: flex-end;
 }
 
@@ -124,26 +114,14 @@ fieldset {
   overflow: hidden;
 }
 
-.form-content input {
-  /* margin-bottom: 5px;
-  padding-left: 15px; */
-}
-
 .form-content label {
-  /* float: left;
-  width: 40px; */
   display: inline-block;
 }
 
 .form-content input[type=text] {
   height: 30px;
-  /* width: calc(100% - 200px); */
   display: block;
   width: 100%;
-}
-
-.form-content button {
-  /* width: calc(100% - 200px); */
 }
 
 .rating-selector {
@@ -170,7 +148,6 @@ h1 {
 
 #bookmark-add-form {
   background-color: #42a5f5;
-  /* border: 2px solid black; */
 }
 
 .bookmark-block {
@@ -178,13 +155,7 @@ h1 {
   color:black;
 }
 
-.bookmark-block-titleinfo {
-  /* background-color: #cfcfcf; */
-  /* color: white; */
-}
-
 .bookmark-block {
-  /* padding-left: 0; */
   border: 2px solid #0069c0;
 }
 
@@ -201,7 +172,6 @@ input[type=text] {
   margin-bottom: 10px;
   display: block;
   background-color: #efefef;
-  /* border: 1px solid #6ec6ff; */
 }
 
 form legend {
